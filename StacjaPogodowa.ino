@@ -91,29 +91,6 @@
 #define NOTE_DS8 4978
 #define REST      0
 
-/*************************************************** 
-  This is an example for the BMP085 Barometric Pressure & Temp Sensor
-
-  Designed specifically to work with the Adafruit BMP085 Breakout 
-  ----> https://www.adafruit.com/products/391
-
-  These pressure and temperature sensors use I2C to communicate, 2 pins
-  are required to interface
-  Adafruit invests time and resources providing this open source code, 
-  please support Adafruit and open-source hardware by purchasing 
-  products from Adafruit!
-
-  Written by Limor Fried/Ladyada for Adafruit Industries.  
-  BSD license, all text above must be included in any redistribution
- ****************************************************/
-
-// Connect VCC of the BMP085 sensor to 3.3V (NOT 5.0V!)
-// Connect GND to Ground
-// Connect SCL to i2c clock - on '168/'328 Arduino Uno/Duemilanove/etc thats Analog 5
-// Connect SDA to i2c data - on '168/'328 Arduino Uno/Duemilanove/etc thats Analog 4
-// EOC is not used, it signifies an end of conversion
-// XCLR is a reset pin, also not used here
-
 Adafruit_BMP085 bmp;
 
 //==============================================================
@@ -151,7 +128,6 @@ void setup() {
   digitalWrite(9, LOW);
   digitalWrite(8, LOW);
   digitalWrite(7, LOW);
-  
 }
   
 void loop() {
@@ -357,11 +333,7 @@ void playHappyMelody() {
   // !!negative numbers are used to represent dotted notes,
   // so -4 means a dotted quarter note, that is, a quarter plus an eighteenth!!
   int melody[] = {
-  
     // Take on me, by A-ha
-    // Score available at https://musescore.com/user/27103612/scores/4834399
-    // Arranged by Edward Truong
-  
     NOTE_FS5,8, NOTE_FS5,8,NOTE_D5,8, NOTE_B4,8, REST,8, NOTE_B4,8, REST,8, NOTE_E5,8, 
     REST,8, NOTE_E5,8, REST,8, NOTE_E5,8, NOTE_GS5,8, NOTE_GS5,8, NOTE_A5,8, NOTE_B5,8,
     NOTE_A5,8, NOTE_A5,8, NOTE_A5,8, NOTE_E5,8, REST,8, NOTE_D5,8, REST,8, NOTE_FS5,8, 
@@ -415,28 +387,10 @@ void playSadMelody() {
   // !!negative numbers are used to represent dotted notes,
   // so -4 means a dotted quarter note, that is, a quarter plus an eighteenth!!
   int melody[] = {
-  
     // The Godfather theme
-    // Score available at https://musescore.com/user/35463/scores/55160
-  
     REST, 4, REST, 8, REST, 8, REST, 8, NOTE_E4, 8, NOTE_A4, 8, NOTE_C5, 8, //1
     NOTE_B4, 8, NOTE_A4, 8, NOTE_C5, 8, NOTE_A4, 8, NOTE_B4, 8, NOTE_A4, 8, NOTE_F4, 8, NOTE_G4, 8,
     NOTE_E4, 2, 
-//NOTE_E4, 8, NOTE_A4, 8, NOTE_C5, 8,
-//    NOTE_B4, 8, NOTE_A4, 8, NOTE_C5, 8, NOTE_A4, 8, NOTE_C5, 8, NOTE_A4, 8, NOTE_E4, 8, NOTE_DS4, 8,
-//    
-//    NOTE_D4, 2, NOTE_D4, 8, NOTE_F4, 8, NOTE_GS4, 8, //5
-//    NOTE_B4, 2, NOTE_D4, 8, NOTE_F4, 8, NOTE_GS4, 8,
-//    NOTE_A4, 2, NOTE_C4, 8, NOTE_C4, 8, NOTE_G4, 8, 
-//    NOTE_F4, 8, NOTE_E4, 8, NOTE_G4, 8, NOTE_F4, 8, NOTE_F4, 8, NOTE_E4, 8, NOTE_E4, 8, NOTE_GS4, 8,
-//  
-//    NOTE_A4, 2, REST,8, NOTE_A4, 8, NOTE_A4, 8, NOTE_GS4, 8, //9
-//    NOTE_G4, 2, NOTE_B4, 8, NOTE_A4, 8, NOTE_F4, 8, 
-//    NOTE_E4, 2, NOTE_E4, 8, NOTE_G4, 8, NOTE_E4, 8,
-//    NOTE_D4, 2, NOTE_D4, 8, NOTE_D4, 8, NOTE_F4, 8, NOTE_DS4, 8, 
-//     
-//    NOTE_E4, 2, REST, 8, NOTE_E4, 8, NOTE_A4, 8, NOTE_C5, 8, //13
- 
   };
   
   // sizeof gives the number of bytes, each int value is composed of two bytes (16 bits)
@@ -447,7 +401,6 @@ void playSadMelody() {
   int wholenote = (60000 * 4) / tempo;
   
   int divider = 0, noteDuration = 0;
-
 
   // iterate over the notes of the melody.
   // Remember, the array is twice the number of notes (notes + durations)
